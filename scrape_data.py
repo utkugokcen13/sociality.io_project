@@ -19,3 +19,21 @@ product_price = product_price[1:]
 
 
 print(product_price)
+
+product_image_url = soup.find("ul", class_="wt-list-unstyled wt-overflow-hidden wt-position-relative carousel-pane-list")\
+                    .find("li", class_="wt-position-absolute wt-width-full wt-height-full wt-position-top wt-position-left carousel-pane")\
+                    .find("img", class_="wt-max-width-full wt-horizontal-center wt-vertical-center carousel-image wt-rounded")
+
+src_string = "src="
+
+srcset_string = "srcset="
+
+src_index = str(product_image_url).find(src_string)
+
+srcset_index = str(product_image_url).find(srcset_string)
+
+product_image_url = str(product_image_url)[src_index+5:srcset_index-2]
+
+print(product_image_url)
+
+
